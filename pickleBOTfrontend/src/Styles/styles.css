@@ -1,0 +1,38 @@
+.text{
+    font-family: Josefin Sans;
+    
+}
+
+input.input-error,
+select.input-error {
+  border-color: #fc8181;
+}
+
+.error {
+    color: #fc8181;
+    font-size: 0.75rem;
+    text-align: left;
+    font-family: Josefin Sans;
+    top: -12px;
+    left: 5px;
+    position: relative
+  }
+
+  .error_2 {
+    color: #fc8181;
+    font-size: 0.75rem;
+    text-align: left;
+    font-family: Josefin Sans;
+    top: -12px;
+    left: 10px;
+    position: relative
+  }
+
+  .loginError{
+    text-align: center;
+    color: #fc8181;
+    top: 30px;
+    font-size: .9rem;
+    font-family: Josefin Sans;
+    position: relative
+  }
