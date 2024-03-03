@@ -113,7 +113,7 @@ function GetStarted() {
             .then(res=> {
                 console.log("User is logged in", res.data)
             }).catch(error => {
-                console.log("User is not logged in", error)
+                console.log("User is not logged in")
                 navigate("/login")
             
             })

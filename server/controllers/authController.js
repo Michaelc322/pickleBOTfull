@@ -84,13 +84,14 @@ const loginUser = async(req, res) => {
 
 const authenticateToken = async(req, res, next)=>{
     try {
+        // console.log("attempting to authenticating token")
+        // console.log(token)
         const authHeader = req.headers['authorization']
         const token = authHeader && authHeader.split(' ')[1]
 
         if(token == null) return res.sendStatus(401);
 
         jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-            console.log(token);
             if(err) return res.sendStatus(403);
             req.user = user;
             next();
@@ -130,8 +131,8 @@ const forgotPassword = async(req, res) => {
             to: email,
             subject: 'pickleBOT - Reset Account Password Link',
             html: `
-            <div style="background-color: #1a1a1a; padding: 20px; border-radius: 10px; font-family: Poppins, sans-serif; text-align: center;">
-                <img src="cid:pickleballLogo" alt="pickleBOT Logo" style="display: block; margin: 0 auto; max-width: 200px;"/>
+            <div style="height: 400px; background-color: #1a1a1a; padding: 20px; border-radius: 10px; font-family: Poppins, sans-serif; text-align: center;">
+                <img src="cid:pickleballLogo" alt="pickleBOT Logo" style="display: block; margin: 0 auto; max-width: 100px;"/>
                 <h1 style="color: #fff;">pickleBOT</h1>
                 <h3 style="color: #fff; margin-top: 10px;">Click the button below to reset your password</h3>
                 <p><a href="http://localhost:5173/reset-password/${token}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Reset Password</a></p>
@@ -166,8 +167,28 @@ const forgotPassword = async(req, res) => {
 
 }
 
+// const resetPassword = async(req, res) => {
+//     const {token, password} = req.body;
+
+//     if(token){
+//         try {
+//             const decodedData = jwt.verify(token, process.env.JWT_SECRET);
+//             const id = decodedData.id;
+    
+//             const hashedPassword = await hashPassword(password)
+    
+//             await User.findByIdAndUpdate({_id: id}, {password: hashedPassword});
+//             return res.status(200).json({message: 'Password changed successfully'})
+//         } catch (error) {
+//             return res.status(400).json({error: 'An error occurred while resetting the password'})
+//         }
+//     }
+// }
+
 const resetPassword = async(req, res) => {
-    const {token, password} = req.body;
+    const {password} = req.body;
+    const {token} = req.params;
+    console.log(token)
 
     if(token){
         try {
@@ -194,6 +215,14 @@ const verifyUser = async(req, res) => {
     }
 }
 
+const logoutUser = async(req, res) => {
+    try {
+        res.clearCookie('token');
+        return res.json({message: 'Logged out successfully'})
+    } catch (error) {
+        return res.json({error: 'An error occurred while logging out'})
+    }
+}
 
 module.exports = {
     registerUser,
@@ -201,5 +230,6 @@ module.exports = {
     authenticateToken,
     resetPassword,
     forgotPassword,
-    verifyUser
+    verifyUser,
+    logoutUser
 }

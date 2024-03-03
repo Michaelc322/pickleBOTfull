@@ -12,7 +12,6 @@ import { Toaster } from 'react-hot-toast';
 import ForgotPassword from "./Pages/ForgotPassword.tsx";
 import ResetPassword from "./Pages/ResetPassword.tsx";
 
-
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
 
@@ -20,8 +19,6 @@ axios.defaults.withCredentials = true;
 export default function App(){
   return(
     <>
-
-
         <Helmet>
           <title>pickleBOT | Reserve Courts</title>
           <link rel="icon" type="image/png" href="./images/pickleball.png"/>

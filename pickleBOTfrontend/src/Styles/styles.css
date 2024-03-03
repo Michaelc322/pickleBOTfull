@@ -36,3 +36,28 @@ select.input-error {
     font-family: Josefin Sans;
     position: relative
   }
+
+  .successH1{
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Poppins;
+    position: relative
+  }
+
+  .successText{
+    text-align: center;
+    color: #4CAF50;
+    font-size: .9rem;
+    font-family: Josefin Sans;
+    position: relative;
+    padding-top: 20px;
+  }
+
+  .successBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+  }

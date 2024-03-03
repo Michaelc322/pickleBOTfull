@@ -4,6 +4,8 @@ import { SlideInFadeRight } from '../Styles/AnimationComponents';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../context/AuthProvider';
+
 
 const FadeUp = keyframes`
     0% {
@@ -88,9 +90,7 @@ padding-left: 10px;
 `
 
 function Navbar(){
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    
+    const { isLoggedIn, login, logout } = useAuth();
 
     
     
