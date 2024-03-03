@@ -4,6 +4,7 @@ import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../context/AuthProvider";
 
 const Section = styled.section`
     display: flex;
@@ -99,6 +100,7 @@ const CodeContainer = styled.div`
 function GetStarted() {
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
+    const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -111,18 +113,18 @@ function GetStarted() {
             };
             axios.get("/auth/user/", config)
             .then(res=> {
-                console.log("User is logged in", res.data)
+                console.log("User is logged in", res.data);
             }).catch(error => {
                 console.log("User is not logged in")
-                navigate("/login")
-            
             })
         }
         else{
             console.log("token is missing")
-            navigate('/login');
+            navigate('/login')
         }
     }, [])
+
+
   return (
     <>
     <Section>

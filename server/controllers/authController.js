@@ -65,7 +65,11 @@ const loginUser = async(req, res) => {
         const match = await comparePassword(password, user.password)
         if(match){
             const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '6h'}, {httpOnly: true});
-           // res.cookie('token', token, {httpOnly: true, maxAge: 360000});
+            const headers = {
+                Authorization: `Bearer ${token}`
+              };
+
+            res.cookie('token', token, {httpOnly: true, maxAge: 360000});
             res.json({user, token});
                 
         }
@@ -206,7 +210,6 @@ const resetPassword = async(req, res) => {
 }
 
 const verifyUser = async(req, res) => {
-    console.log("verifying user")
     try {
         const user = req.user.user;
         return res.json(user);

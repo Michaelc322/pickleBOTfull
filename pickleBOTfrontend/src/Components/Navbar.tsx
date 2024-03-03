@@ -66,6 +66,11 @@ const NavLink = styled.a`
         transition: 0.3s;
     
     }
+
+    i{
+        margin-left: 10px;
+    
+    }
 `
 
 
@@ -90,8 +95,17 @@ padding-left: 10px;
 `
 
 function Navbar(){
-    const { isLoggedIn, login, logout } = useAuth();
+    const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
+    const LogOut = () => {
+        console.log("Logging out")
+        axios.get('/auth/logout').then(response => {
+            localStorage.removeItem('token');
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
     
     
   return (
@@ -103,11 +117,11 @@ function Navbar(){
             </LogoNav>
 
             <nav>
-                <NavLink href="/getstarted">Documentation</NavLink>
+                <NavLink href="/getstarted">Documentation<i class="fa-solid fa-folder-open"></i></NavLink>
                 {isLoggedIn ? (
-                    <NavLink href="/">Log Out</NavLink>
+                    <NavLink onClick={LogOut} href="/">Log Out<i class="fa-solid fa-right-from-bracket"></i></NavLink>
                 ) : (
-                    <NavLink href="/register">Sign Up</NavLink>
+                    <NavLink href="/register">Sign Up<i class="fa-solid fa-user-plus"></i></NavLink>
                 )}
             </nav>
 
