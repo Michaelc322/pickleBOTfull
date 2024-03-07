@@ -36,7 +36,9 @@ const registerUser = async(req, res) => {
             firstName,
             lastName,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            role: 'USER',
+            stripeSessionID: '',
         })
 
         return res.json(user)
@@ -57,7 +59,6 @@ const loginUser = async(req, res) => {
 
         // check if user exists
         const user = await User.findOne({email});
-        console.log(user)
         if(!user){
             return res.json({
                 error: 'Incorrect email or password'

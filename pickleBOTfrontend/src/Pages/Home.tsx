@@ -1,24 +1,25 @@
 import styled, { keyframes } from "styled-components"
 import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents";
+import { device } from "../Styles/breakpoints";
 
 
 
 const Section = styled.section`
     display: flex;
-    padding: 80px;
+    width: 100%;
     align-items: center;
     background-color: #121212;
-    height: 80vh;
+    height: 100vh;
     flex-direction: column;
     
 `
 
 const SectionTwo = styled.section`
     display: flex;
-    padding: 80px;
+    width: 100%;
     align-items: center;
     background-color: #121212;
-    height: 65vh;
+    height: 80vh;
     flex-direction: column;
     
 `
@@ -44,6 +45,7 @@ const IntroBox = styled.div`
 `
 
 const WelcomeMsg = styled.h1`
+    margin-top: 80px;
     text-align: center;
     font-family: Josefin Sans;
     color: white;
@@ -67,17 +69,40 @@ const Testimonial = styled.div`
     align-items: center;
     position: relative;
     width: 1150px;
+    left: 60px;
 
+    @media ${device.lg}{
+        width: 800px;
+    
+    }
+
+    @media ${device.md}{
+        left: 0px;
+        width: 700px;
+    }
+
+    @media ${device.lg}{
+        width: 300px;
+    
+    }
 
 `
 const Container = styled.div`
+    margin-top: 80px;
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 1150px;
+    width: 1000px;
     font-family: Poppins;
+    text-align: center;
+
+    @media ${device.lg}{
+        width: 300px;
+    
+    }
 `
 
 const SmallContainer = styled.div`
@@ -89,6 +114,7 @@ const SmallContainer = styled.div`
     width: 200px;
     font-family: Poppins;
     margin-top: 80px;
+
 `
 
 const TitleText = styled.h1`
@@ -190,6 +216,7 @@ const GetStartedButton = styled.button`
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
     transform: scale(1);
     transition: 0.5s;
+
     a{
         width:100%;
         line-height: 28px;

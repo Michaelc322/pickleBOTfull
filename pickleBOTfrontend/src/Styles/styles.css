@@ -62,3 +62,7 @@ select.input-error {
     margin: 20px;
   }
 
+.menuActive{
+  left: 100%;
+  transition: 0.5s ease;
+}

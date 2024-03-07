@@ -8,7 +8,12 @@ const userSchema = new Schema({
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+    stripeSessionID: String,
+    role: {
+        type: String,
+        default: 'USER'
+    }
 })
 
 const UserModel = mongoose.model('User', userSchema);

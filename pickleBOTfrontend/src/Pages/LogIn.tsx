@@ -7,6 +7,9 @@ import { Helmet } from 'react-helmet';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useAuth } from '../../context/AuthProvider';
+import '../Styles/styles.css';
+
+
 
 export default function LogIn() { 
     axios.defaults.withCredentials = true;
@@ -32,13 +35,13 @@ export default function LogIn() {
                 setUserInfo(data.user);
 
                 //localStorage.setItem('token', data.token);
-                login();
                 if(data.error){
                     toast.error(data.error);
                     setError(data.error);
                 } else {
                     toast.success('Logged in successfully!')
                     navigate('/getstarted')
+                    login();
                 }
             }
             catch (error) {

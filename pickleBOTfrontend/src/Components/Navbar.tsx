@@ -4,6 +4,7 @@ import { SlideInFadeRight } from '../Styles/AnimationComponents';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthProvider.tsx';
+import '../Styles/styles.css';
 
 const FadeUp = keyframes`
     0% {
@@ -22,12 +23,21 @@ const Nav = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1a1a1a;
+    background: #121212;
     height: 80px;
     width: 100%;
     overflow: hidden;
     z-index: 100;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+
+    @media screen and (max-width: 768px){
+        nav{
+            display: none;
+        }
+    }
+
+    
 `
 
 const NavLink = styled.a`
@@ -72,6 +82,8 @@ const NavLink = styled.a`
 
     
     }
+
+
 `
 
 
@@ -133,12 +145,79 @@ const DropItems = styled.a`
     }
 `
 
+const Hamburger = styled.div`
+    display: none;
+
+    @media screen and (max-width: 768px){
+        display: block;
+        right: 30px;
+        position: relative;
+        cursor: pointer;
+        i{
+            font-size: 26px;
+        }
+    }
+`
+
+const MobileMenuDiv = styled.div`
+    display: none;
+    @media screen and (max-width: 768px){
+        position: fixed;
+        z-index: 13;
+        background-color: #121212;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        top: 80px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        align-items: center;
+        left:100%;
+        transition: all 0.5s ease;
+
+        &.menuActive{
+            left: 0%;
+            transition: all 0.5s ease;
+        }
+    }
+
+`
+
+const MenuLink = styled.a`
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-family: Poppins;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+
+    animation: ${FadeUp} 0.2s linear;
+
+
+    i{
+        margin-right: 10px;
+        margin-left: 5px;
+
+    
+    }
+
+`
+
 function Navbar(){
     const { isLoggedIn, logout, userInfo } = useAuth() as { isLoggedIn: boolean, logout: () => void, userInfo: any };
     const [openDropdownMenu, setOpenDropdownMenu] = useState(false);  
+    const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false);
 
     const openDropdown = () => {
         setOpenDropdownMenu(!openDropdownMenu);
+    }
+
+    const openHamburger = () => {
+        setOpenHamburgerMenu(!openHamburgerMenu);
     }
 
     // Example: Check if user is logged in from localStorage
@@ -175,6 +254,7 @@ function Navbar(){
                 <LogoTitle>pickleBOT</LogoTitle>
             </LogoNav>
 
+        
             <nav>
                 <NavLink href="/getstarted"><i className="fa-solid fa-folder-open"></i>Documentation</NavLink>
                 {isLoggedIn ? (
@@ -188,7 +268,7 @@ function Navbar(){
 
             </nav>
 
-
+            <Hamburger><i onClick={openHamburger} className={openHamburgerMenu ? "fa-solid fa-x":"fa-solid fa-bars"}></i></Hamburger>
 
               
 
@@ -198,10 +278,33 @@ function Navbar(){
                     <MenuDiv>
                         <DropItems href="/">Settings<i className="fa-solid fa-gear"></i></DropItems>
                         <DropItems onClick={logout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></DropItems>
+
                     </MenuDiv>
                 
-                )}
-    
+        )}
+
+        <MobileMenuDiv className={openHamburgerMenu ? "menuActive" : ""}>
+            <MenuLink href="/"><i className="fa-solid fa-house"></i>Home</MenuLink>
+            <MenuLink href="/getstarted"><i className="fa-solid fa-folder-open"></i>Documentation</MenuLink>
+            {isLoggedIn ? (
+                <>
+                    <MenuLink href="/">Settings<i className="fa-solid fa-gear"></i></MenuLink>
+                    <MenuLink onClick={logout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></MenuLink>
+
+                </>
+
+            ) : (
+                <>
+                <MenuLink href="/register"><i className="fa-solid fa-user-plus"></i>Sign Up</MenuLink>
+                <MenuLink href="/login"><i className="fa-solid fa-right-to-bracket"></i>Log In</MenuLink>
+                </>
+                
+            )}
+
+        </MobileMenuDiv>   
+        
+        
+        
     </>
   )
 }
