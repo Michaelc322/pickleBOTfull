@@ -116,7 +116,7 @@ export const Fields = styled.input`
     color: white;
     font-size: 14px;
     padding: 15px;
-    margin: 5px 7px 20px 7px;
+    margin: 5px 0px 20px 0px;
     border-radius: 10px;
     outline: none;
     border: 1px solid #111111;
