@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { useAuth } from '../../context/AuthProvider';
 
 export default function LogIn() { 
     axios.defaults.withCredentials = true;
+    const { login } = useAuth() as any;
     const basicSchema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Required'),
         password: yup.string().required('Required')
@@ -28,8 +30,8 @@ export default function LogIn() {
             try {
                 const {data} = await axios.post('/login', values);
 
-                localStorage.setItem('token', data.token);
-
+                //localStorage.setItem('token', data.token);
+                login();
                 if(data.error){
                     toast.error(data.error);
                     setError(data.error);

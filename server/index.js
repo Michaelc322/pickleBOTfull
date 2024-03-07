@@ -18,10 +18,11 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 // middleware
-app.use(express.json());
-app.use('/', require('./routes/authRoutes'));
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+app.use('/', require('./routes/authRoutes'));
+
 
 
 const PORT = 8000;

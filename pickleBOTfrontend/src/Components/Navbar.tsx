@@ -4,8 +4,9 @@ import { SlideInFadeRight } from '../Styles/AnimationComponents';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../context/AuthProvider';
-
+import { useAuth } from '../../context/AuthProvider.tsx';
+import UserDropdown from './UserDropdown.tsx';
+import styles from '../Styles/styles.css';
 
 const FadeUp = keyframes`
     0% {
@@ -44,6 +45,7 @@ const NavLink = styled.a`
     font-size: 18px;
     font-weight: 400;
     position: relative;
+    cursor: pointer;
     
     background-image: linear-gradient(90deg, white, white);
     background-clip: text;
@@ -68,7 +70,9 @@ const NavLink = styled.a`
     }
 
     i{
-        margin-left: 10px;
+        margin-right: 10px;
+        margin-left: 5px;
+
     
     }
 `
@@ -94,20 +98,77 @@ padding-left: 10px;
     font-family: Josefin Sans;
 `
 
-function Navbar(){
-    const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
+const MenuDiv = styled.div`
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    height: 70px;
+    background-color: #1a1a1a;
+    width: 150px;
+    position: fixed;
+    right: 40px;
+    z-index: 2;
+    flex-direction: column;
 
-    const LogOut = () => {
-        console.log("Logging out")
-        axios.get('/auth/logout').then(response => {
-            localStorage.removeItem('token');
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        })
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+    top: 80px;
+    transition: transform 0.3s ease;
+
+    
+`
+
+const DropItems = styled.a`
+    color: #ffffff;
+    text-align: center;
+    font-family: Josefin Sans;
+    text-decoration: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    margin: 5px;
+    cursor: pointer;
+
+    i{
+        margin-left: 10px;
     }
-    
-    
+`
+
+function Navbar(){
+    const { isLoggedIn, logout, userInfo } = useAuth() as { isLoggedIn: boolean, logout: () => void, userInfo: any };
+    const [openDropdownMenu, setOpenDropdownMenu] = useState(false);  
+
+    const openDropdown = () => {
+        setOpenDropdownMenu(!openDropdownMenu);
+    }
+
+    // Example: Check if user is logged in from localStorage
+    axios.defaults.withCredentials = true;
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if(token){
+            // Set the Authorization header with the token
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            };
+            axios.get("/auth/user/", config)
+            .then(res=> {
+
+                console.log("logged in", res.data)
+            }).catch(error => {
+                console.log("User is not logged in; log in is false")
+            
+            })
+        }
+        else{
+            console.log("token is missing")
+        }
+    }, [])
+
   return (
     <>
         <Nav>
@@ -117,17 +178,31 @@ function Navbar(){
             </LogoNav>
 
             <nav>
-                <NavLink href="/getstarted">Documentation<i class="fa-solid fa-folder-open"></i></NavLink>
+                <NavLink href="/getstarted"><i className="fa-solid fa-folder-open"></i>Documentation</NavLink>
                 {isLoggedIn ? (
-                    <NavLink onClick={LogOut} href="/">Log Out<i class="fa-solid fa-right-from-bracket"></i></NavLink>
+                    <>
+                        <NavLink onClick={openDropdown}><i className="fa-solid fa-user"></i>{userInfo.firstName}<i className="fa-solid fa-caret-down"></i></NavLink>
+                    </>
+
                 ) : (
-                    <NavLink href="/register">Sign Up<i class="fa-solid fa-user-plus"></i></NavLink>
+                    <NavLink href="/register"><i className="fa-solid fa-user-plus"></i>Sign Up</NavLink>
                 )}
+
             </nav>
+
+
 
               
 
         </Nav>
+
+        {openDropdownMenu && (
+                    <MenuDiv>
+                        <DropItems href="/">Settings<i className="fa-solid fa-gear"></i></DropItems>
+                        <DropItems onClick={logout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></DropItems>
+                    </MenuDiv>
+                
+                )}
     
     </>
   )

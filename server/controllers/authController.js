@@ -2,6 +2,8 @@ const User = require('../models/user')
 const { hashPassword, comparePassword } = require('../helpers/auth')
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const cookieParser = require('cookie-parser');
+
 
 // Register endpoint
 const registerUser = async(req, res) => {
@@ -55,6 +57,7 @@ const loginUser = async(req, res) => {
 
         // check if user exists
         const user = await User.findOne({email});
+        console.log(user)
         if(!user){
             return res.json({
                 error: 'Incorrect email or password'
@@ -63,22 +66,18 @@ const loginUser = async(req, res) => {
         
         // check if passwords match
         const match = await comparePassword(password, user.password)
-        if(match){
-            const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn: '6h'}, {httpOnly: true});
-            const headers = {
-                Authorization: `Bearer ${token}`
-              };
+        if (match) {
+            const token = jwt.sign({user}, process.env.JWT_SECRET, { expiresIn: '10s' });
 
-            res.cookie('token', token, {httpOnly: true, maxAge: 360000});
-            res.json({user, token});
-                
+            res.setHeader('Authorization', `Bearer ${token}`);
+            res.cookie('jwt', token, { httpOnly: true, maxAge: 10000 });
+            res.json({ user, token });
         }
 
-        if(!match){
+        if (!match) {
             return res.json({
                 error: 'Incorrect email or password'
-            })
-            
+            });
         }
 
     } catch (error) {
@@ -88,10 +87,11 @@ const loginUser = async(req, res) => {
 
 const authenticateToken = async(req, res, next)=>{
     try {
-        // console.log("attempting to authenticating token")
-        // console.log(token)
-        const authHeader = req.headers['authorization']
-        const token = authHeader && authHeader.split(' ')[1]
+        console.log("attempting to authenticating token")
+        // const authHeader = req.headers['authorization']
+        // const token = authHeader && authHeader.split(' ')[1]
+
+        const token = req.cookies.jwt;
 
         if(token == null) return res.sendStatus(401);
 
@@ -211,7 +211,7 @@ const resetPassword = async(req, res) => {
 
 const verifyUser = async(req, res) => {
     try {
-        const user = req.user.user;
+        const user = req.user;
         return res.json(user);
     } catch (error) {
         return res.json({error: 'An error occurred while verifying the user'})
@@ -220,7 +220,7 @@ const verifyUser = async(req, res) => {
 
 const logoutUser = async(req, res) => {
     try {
-        res.clearCookie('token');
+        res.clearCookie('jwt');
         return res.json({message: 'Logged out successfully'})
     } catch (error) {
         return res.json({error: 'An error occurred while logging out'})

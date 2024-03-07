@@ -1,18 +1,15 @@
 import styled from "styled-components";
  
 export const Box = styled.div`
-    padding: 5% 2.5%;
     background: #1a1a1a;
     // position: absolute;
     bottom: 0;
-    width: 95%;
+    width: 100%;
  
-    @media (max-width: 1000px) {
-        // padding: 70px 30px;
-    }
 `;
  
 export const FooterContainer = styled.div`
+    padding: 70px 30px;
     align-items: center;
     display: flex;
     justify-content: space-between;
