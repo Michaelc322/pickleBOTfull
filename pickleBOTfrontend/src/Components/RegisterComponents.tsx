@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components"
-import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents";
+import styled from "styled-components"
+import { device } from "../Styles/breakpoints"
 
 
 
@@ -15,70 +15,18 @@ const Section = styled.section`
     
 `
 
-const SectionTwo = styled.section`
-    display: flex;
-    padding: 80px;
-    align-items: center;
-    background-color: #121212;
-    height: 65vh;
-    flex-direction: column;
-    
-`
-
-const UserSlide = keyframes`
-    0% {
-        opacity: 0%;
-        transform: translateX(0) scale(1);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(-80) scale(1);
-    }
-`
-const IntroBox = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
-    padding: 50px;
-    position: relative;
-`
-
-const WelcomeMsg = styled.h1`
-    text-align: center;
-    font-family: Josefin Sans;
-    color: white;
-    font-size: 40px;
-    animation: ${SlideInFadeLeft} 0.5s linear;
-
-`
-
-const SpecWords = styled.span`
-    font-family: Josefin Sans;
-    background-image: linear-gradient(90deg, #c2fd15, #70d8a9);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: ${FadeUp} 0.5s linear;
-
-`
-
-const Testimonial = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 1150px;
 
 
-`
+
+
+
 const Container = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 30%;
+    width: 30rem;
     font-family: Poppins;
 
     &::before, &::after{
@@ -116,17 +64,10 @@ const Container = styled.div`
         }
     }
 
-`
+    @media ${device.md}{
+        width: 23rem;
+    }
 
-const SmallContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    width: 200px;
-    font-family: Poppins;
-    margin-top: 80px;
 `
 
 const TitleText = styled.h1`
@@ -140,34 +81,7 @@ const TitleText = styled.h1`
 
 `
 
-const BulletPoints = styled.div`
-    display:flex;
-    flex-direction: column;
-    text-align: left;
 
-    p{
-        font-size: 17px;
-        margin-bottom: 10px;
-    }
-`
-
-const Box = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-family: Poppins;
-    justify-content: center;
-    padding: 0px 20px 0px 20px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2em;
-    height: 20rem;
-    width: 40rem;
-    backdrop-filter: blur(20px);
-    z-index: 11;
-    transform: translate(-80px, 50px);
-    animation: ${UserSlide} 1s linear;
-
-`
 
 
 
@@ -209,9 +123,14 @@ export const Fields = styled.input`
     background: #1d1d1d;
     transition: all 0.3s ease;
 
+    // edits
+    box-sizing: border-box;
+    width: 100%;
+    
     &:focus{
         border-color:#c2fd15;
     }
+    
 
 `
 
@@ -287,6 +206,7 @@ export const FormBox = styled.form`
     justify-content: center;
     margin-top: 20px;
     padding: 40px 60px;
+
 `
 
 export const SmallText = styled.h2`
@@ -301,10 +221,17 @@ export const SmallText = styled.h2`
 `
 
 export const NameCon = styled.div`
-    display: inline-grid;
+    display: grid;
     grid-template-columns: 1fr 1fr;
+    position: relative;
+    column-gap: 10px;
+
+    @media ${device.xxl}{
+        
+    
+    }
 
 `
 
 
-export { Section, SectionTwo, IntroBox, WelcomeMsg, SpecWords, Testimonial, Container, SmallContainer, TitleText, BulletPoints, Box }
+export { Section, Container, TitleText }
