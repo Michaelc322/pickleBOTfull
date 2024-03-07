@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallLink, SmallText, SubmitButton, TitleText } from '../Components/LogInComponents';
+import { Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallLink, SmallText, SubmitButton } from '../Components/LogInComponents';
 import axios from 'axios';
 import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -45,30 +45,6 @@ export default function LogIn() {
             }
         }
     })
-
-    // const loginUser = async(e: React.FormEvent) => {
-    //     e.preventDefault();
-    //     const {email, password} = data;
-    //     try {
-    //         const {data} = await axios.post('/login',{
-    //             email, 
-    //             password
-    //         });
-
-    //         if(data.error){
-    //             setError(data.error)
-    //            // toast.error(data.error)
-    //         } else {
-    //             setData({email: '', password: ''})
-    //             toast.success('Logged in successfully!')
-    //             navigate('/getstarted')
-    //         }
-
-
-    //     } catch (error) {
-            
-    //     }
-    // }
 
 
   return (
