@@ -77,13 +77,13 @@ const Testimonial = styled.div`
     }
 
     @media ${device.md}{
-        left: 0px;
-        width: 700px;
+        width: 80%;
     }
-
-    @media ${device.lg}{
+    @media ${device.sm}{
+        left: 0px;
         width: 300px;
-    
+        height: 400px;
+        flex-direction: column;
     }
 
 `
@@ -124,6 +124,11 @@ const TitleText = styled.h1`
     -webkit-text-fill-color: transparent;
     font-size: 50px;
 
+    @media ${device.lg}{
+        font-size: 40px;
+    
+    }
+
 `
 
 const BulletPoints = styled.div`
@@ -151,6 +156,11 @@ const Box = styled.div`
     backdrop-filter: blur(20px);
     z-index: 11;
     transform: translate(-80px, 50px);
+
+    @media ${device.sm}{
+        transform: translate(0px, -50px);
+        width: 350px;
+    }
 
 `
 
@@ -192,13 +202,18 @@ const PickleImage = styled.div`
     overflow: hidden;
     img{
         z-index: 8;
-        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
+        position: absolute;
+
+    }
+    @media ${device.sm}{
+            width: 100%;
+            height: 100%;
     }
 `
 
