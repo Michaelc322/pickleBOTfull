@@ -2,11 +2,8 @@
 import styled, { keyframes } from 'styled-components';
 import { SlideInFadeRight } from '../Styles/AnimationComponents';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthProvider.tsx';
-import UserDropdown from './UserDropdown.tsx';
-import styles from '../Styles/styles.css';
 
 const FadeUp = keyframes`
     0% {
@@ -168,6 +165,7 @@ function Navbar(){
             console.log("token is missing")
         }
     }, [])
+
 
   return (
     <>

@@ -10,7 +10,7 @@ import { useAuth } from '../../context/AuthProvider';
 
 export default function LogIn() { 
     axios.defaults.withCredentials = true;
-    const { login } = useAuth() as any;
+    const { login, setUserInfo } = useAuth() as any;
     const basicSchema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Required'),
         password: yup.string().required('Required')
@@ -29,6 +29,7 @@ export default function LogIn() {
         onSubmit: async (values) => {
             try {
                 const {data} = await axios.post('/login', values);
+                setUserInfo(data.user);
 
                 //localStorage.setItem('token', data.token);
                 login();
