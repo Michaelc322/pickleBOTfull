@@ -81,7 +81,7 @@ const Testimonial = styled.div`
     }
     @media ${device.sm}{
         left: 0px;
-        width: 300px;
+        width: 250px;
         height: 400px;
         flex-direction: column;
     }
@@ -158,15 +158,24 @@ const Box = styled.div`
     transform: translate(-80px, 50px);
 
     @media ${device.sm}{
-        transform: translate(0px, -50px);
-        width: 350px;
+        transform: translate(0px, 20px);
+        width: 300px;
+        padding: 0px;
+        height: 10rem;
+        border-radius: 1em;
     }
 
 `
 
 const UserProfile = styled.div`
+
+    position: relative;
     display: flex;
 
+    @media ${device.sm}{
+
+        padding-left: 10px;
+    }
 `
 const Name = styled.div`
     display: flex;
@@ -177,15 +186,30 @@ const Name = styled.div`
     }
     h2{
         line-height: 24px;
+        @media ${device.sm}{
+
+            line-height: 15px;
+        }
+    }
+    @media ${device.sm}{
+
+        font-size: 10px;
     }
 `
 const TMessage = styled.div`
     font-family: Quicksand;
-    line-height: 23px;
+    line-height: 15px;
     position: relative;
     p{
         color: white;
     }
+
+    @media ${device.sm}{
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 14px;
+    }
+
 `
 const ProfilePic = styled.div`
     position: relative;
@@ -193,7 +217,12 @@ const ProfilePic = styled.div`
         border-radius: 50%;
         height: 50px;
         margin-right: 12px;
+        @media ${device.sm}{
+        height: 30px;
     }
+    }
+
+
 `
 const PickleImage = styled.div`
     position: relative;
