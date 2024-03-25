@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components"
-import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents";
+import styled from "styled-components"
+import { FadeUp, SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { device } from "../Styles/breakpoints";
 
 
@@ -24,17 +24,6 @@ const SectionTwo = styled.section`
     
 `
 
-const UserSlide = keyframes`
-    0% {
-        opacity: 0%;
-        transform: translateX(0) scale(1);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(-80) scale(1);
-    }
-`
 const IntroBox = styled.div`
     display: flex;
     justify-content: center;
