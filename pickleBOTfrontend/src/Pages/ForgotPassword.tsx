@@ -1,19 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallText, SubmitButton } from '../Components/ForgotPasswordComponents'
 import { Helmet } from 'react-helmet'
-import axios, { Axios } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import axios from 'axios';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import '../Styles/styles.css';
 
 export default function ForgotPassword(){
-    const [email, setEmail] = useState('');
     const [success, setSuccess] = useState(false);
-    const [error, setError] = useState('');
-    const navigate = useNavigate();
-
     const basicSchema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Email is required'),
     })
@@ -29,7 +23,6 @@ export default function ForgotPassword(){
                 const {data} = await axios.post('/forgot-password', values);
                 if(data.error){
                     //toast.error(data.error);
-                    setError(data.error);
                     setSuccess(true);
                 } else {
                     setSuccess(true);
@@ -40,19 +33,7 @@ export default function ForgotPassword(){
             }
         }
     })
-    // const resetPassword = async (e: React.FormEvent) => {
-    //     e.preventDefault();
 
-    //     axios.post("/forgot-password", { 
-    //         email 
-    //     }).then(response => {
-    //         setSuccess(true);
-    //         toast.success('Check your email for a reset link');            
-    //     }).catch(error => {
-    //         console.log(error);
-    //     })
-
-    // };
 
     return (
         <>

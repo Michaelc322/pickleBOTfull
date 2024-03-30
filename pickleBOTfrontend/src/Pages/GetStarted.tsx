@@ -100,8 +100,6 @@ const CodeContainer = styled.div`
 function GetStarted() {
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
-    const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
-
     useEffect(() => {
         // const token = localStorage.getItem('token');
         // if(token){
@@ -115,7 +113,7 @@ function GetStarted() {
             .then(res=> {
                 console.log("trying to verify for getting started", res.data);
             }).catch(error => {
-                console.log("failed to verify getting started")
+                console.log("failed to verify getting started", error.response.data)
                 navigate('/login')
             })
         //}
