@@ -11,6 +11,7 @@ import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import ForgotPassword from "./Pages/ForgotPassword.tsx";
 import ResetPassword from "./Pages/ResetPassword.tsx";
+import BotStart from "./Pages/BotStart.tsx";
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
@@ -37,6 +38,7 @@ export default function App(){
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/forgot-password" element={<ForgotPassword/>}/>
                 <Route path="/reset-password/:token" element={<ResetPassword/>}/>
+                <Route path="/reserve-courts" element = {<BotStart/>}/>
               </Routes>
           </BrowserRouter>
 

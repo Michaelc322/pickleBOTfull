@@ -40,7 +40,7 @@ export default function LogIn() {
                     setError(data.error);
                 } else {
                     toast.success('Logged in successfully!')
-                    navigate('/getstarted')
+                    navigate('/')
                     login();
                 }
             }

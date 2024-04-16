@@ -236,7 +236,7 @@ function Navbar(){
 
                 console.log("logged in", res.data)
             }).catch(error => {
-                console.log("User is not logged in; log in is false")
+                console.log("User is not logged in; log in is false", error.response.data)
             
             })
         }
@@ -256,7 +256,9 @@ function Navbar(){
 
         
             <nav>
+                <NavLink href="/reserve-courts"><i className="fa-solid fa-calendar-days"></i>Reserve</NavLink>
                 <NavLink href="/getstarted"><i className="fa-solid fa-folder-open"></i>Documentation</NavLink>
+
                 {isLoggedIn ? (
                     <>
                         <NavLink onClick={openDropdown}><i className="fa-solid fa-user"></i>{userInfo.firstName}<i className="fa-solid fa-caret-down"></i></NavLink>
@@ -284,8 +286,9 @@ function Navbar(){
         )}
 
         <MobileMenuDiv className={openHamburgerMenu ? "menuActive" : ""}>
-            <MenuLink href="/"><i className="fa-solid fa-house"></i>Home</MenuLink>
-            <MenuLink href="/getstarted"><i className="fa-solid fa-folder-open"></i>Documentation</MenuLink>
+            <MenuLink href="/">Home<i className="fa-solid fa-house"></i></MenuLink>
+            <MenuLink href="/getstarted">Documentation<i className="fa-solid fa-folder-open"></i></MenuLink>
+            <MenuLink href="/reserve-courts">Reserve<i className="fa-solid fa-calendar-days"></i></MenuLink>
             {isLoggedIn ? (
                 <>
                     <MenuLink href="/">Settings<i className="fa-solid fa-gear"></i></MenuLink>
@@ -295,8 +298,8 @@ function Navbar(){
 
             ) : (
                 <>
-                <MenuLink href="/register"><i className="fa-solid fa-user-plus"></i>Sign Up</MenuLink>
-                <MenuLink href="/login"><i className="fa-solid fa-right-to-bracket"></i>Log In</MenuLink>
+                <MenuLink href="/register">Sign Up<i className="fa-solid fa-user-plus"></i></MenuLink>
+                <MenuLink href="/login">Log In<i className="fa-solid fa-right-to-bracket"></i></MenuLink>
                 </>
                 
             )}

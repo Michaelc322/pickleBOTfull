@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "puppeteer": "^22.6.5"
+  }
+}
