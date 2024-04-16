@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
 import { Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallText, SubmitButton } from '../Components/ForgotPasswordComponents'
 import { Helmet } from 'react-helmet'
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
