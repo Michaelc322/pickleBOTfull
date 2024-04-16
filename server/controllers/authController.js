@@ -68,10 +68,11 @@ const loginUser = async(req, res) => {
         // check if passwords match
         const match = await comparePassword(password, user.password)
         if (match) {
-            const token = jwt.sign({user}, process.env.JWT_SECRET, { expiresIn: '10s' });
+            const token = jwt.sign({user}, process.env.JWT_SECRET, { expiresIn: '6h' });
 
             res.setHeader('Authorization', `Bearer ${token}`);
-            res.cookie('jwt', token, { httpOnly: true, maxAge: 10000 });
+            // 28800000 = 8 hours
+            res.cookie('jwt', token, { httpOnly: true, maxAge: 28800000 });
             res.json({ user, token });
         }
 

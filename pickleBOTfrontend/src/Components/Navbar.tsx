@@ -276,7 +276,7 @@ function Navbar(){
 
         {openDropdownMenu && (
                     <MenuDiv>
-                        <DropItems href="/">Settings<i className="fa-solid fa-gear"></i></DropItems>
+                        {/* <DropItems href="/">Settings<i className="fa-solid fa-gear"></i></DropItems> */}
                         <DropItems onClick={logout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></DropItems>
 
                     </MenuDiv>

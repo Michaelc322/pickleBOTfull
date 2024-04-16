@@ -4,7 +4,6 @@ import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import { useAuth } from "../../context/AuthProvider";
 
 const Section = styled.section`
     display: flex;
