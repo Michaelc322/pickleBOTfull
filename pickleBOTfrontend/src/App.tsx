@@ -13,7 +13,7 @@ import ForgotPassword from "./Pages/ForgotPassword.tsx";
 import ResetPassword from "./Pages/ResetPassword.tsx";
 import BotStart from "./Pages/BotStart.tsx";
 
-axios.defaults.baseURL = 'https://pickle-bo-tfull-9nql-end.vercel.app';
+axios.defaults.baseURL = 'https://pickleapi.vercel.app';
 axios.defaults.withCredentials = true;
 
 
