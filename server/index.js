@@ -15,16 +15,16 @@ mongoose.connect(process.env.MONGO_URL)
 .catch((err) => console.log('Database connection failed', err));
 
 
-// const options = [
-//     cors({
-//       origin: '*',
-//       methods: '*',
-//       allowedHeaders: ['Content-Type', 'Authorization'],
-//       credentials: true,
-//     })
-//   ];
+const options = [
+    cors({
+      origin: '*',
+      methods: '*',
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      credentials: true,
+    })
+  ];
   
-// app.use(options);
+app.use(options);
 
 // middleware
 app.use(cookieParser());
