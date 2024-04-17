@@ -8,7 +8,7 @@ const { registerUser, loginUser, verifyUser, resetPassword, forgotPassword, auth
 router.use(
     cors({
         credentials: true,
-        origin: 'https://pickle-bo-tfull.vercel.app/'
+        origin: 'https://pickle-bo-tfull.vercel.app'
     })
 );
 
