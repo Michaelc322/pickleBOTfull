@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URL)
 
 const options = [
     cors({
-      origin: 'https://pickle-bo-tfull-9nql-end.vercel.app/',
+      origin: 'https://pickle-bo-tfull.vercel.app/',
       methods: '*',
       allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true,
