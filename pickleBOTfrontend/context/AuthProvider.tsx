@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
             const getProfile = async () => { 
                 try {
-                    const {data} = await axios.get('/auth/user');
+                    const {data} = await axios.get('/auth/user/');
                     console.log("data", data)
                     if(data.error){
                         console.log(data.error);
