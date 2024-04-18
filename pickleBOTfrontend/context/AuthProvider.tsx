@@ -15,8 +15,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [userInfo, setUserInfo] = useState({});
     // Example: Check if user is logged in from localStorage
     axios.defaults.withCredentials = true;
-
-    
+const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
             const getProfile = async () => { 
@@ -26,6 +25,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     if(data.error){
                         console.log(data.error);
                     } else {
+                        setIsLoading(false);
                         setUserInfo(data.user);
                         setIsLoggedIn(true);
                     }
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, userInfo, setUserInfo }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, userInfo, setUserInfo, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
