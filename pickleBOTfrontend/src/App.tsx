@@ -53,6 +53,10 @@ export default function App(){
           <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<LogIn/>}/>
+                <Route path="/register" element={<Register/>}/>
+                <Route path="/*" element={<Home/>}/>
+                <Route path="/forgot-password" element={<ForgotPassword/>}/>
                 </Routes>
           </BrowserRouter>
           </>
