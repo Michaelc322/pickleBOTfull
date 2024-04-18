@@ -72,7 +72,7 @@ const loginUser = async(req, res) => {
 
             res.setHeader('Authorization', `Bearer ${token}`);
             // 28800000 = 8 hours
-            res.cookie('jwt', token, { httpOnly: true, maxAge: 28800000 });
+            res.cookie('jwt', token, { httpOnly: true, maxAge: 28800000, secure: true, sameSite: 'none'});
             res.json({ user, token });
         }
 
