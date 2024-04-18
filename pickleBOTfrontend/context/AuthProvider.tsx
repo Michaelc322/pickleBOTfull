@@ -32,6 +32,8 @@ const [isLoading, setIsLoading] = useState(true);
                 }
                 catch (error) {
                     console.log(error);
+                    setIsLoggedIn(false);
+                    setIsLoading(false);
                 }
             }
             getProfile();
