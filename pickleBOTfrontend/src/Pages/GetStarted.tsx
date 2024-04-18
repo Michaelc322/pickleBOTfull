@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, redirect } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../context/AuthProvider";
 
 const Section = styled.section`
     display: flex;
@@ -98,34 +99,36 @@ const CodeContainer = styled.div`
 
 function GetStarted() {
     const navigate = useNavigate();
+    const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
+
+
     axios.defaults.withCredentials = true;
-    useEffect(() => {
-        // const token = localStorage.getItem('token');
-        // if(token){
-        //     // Set the Authorization header with the token
-        //     const config = {
-        //         headers: {
-        //             Authorization: `Bearer ${token}`
-        //         }
-        //     };
-            axios.get("/auth/user/", { withCredentials: true })
-            .then(res=> {
-                console.log("trying to verify for getting started", res.data);
-            }).catch(error => {
-                console.log("failed to verify getting started", error.response.data)
-                navigate('/login')
-            })
-        //}
-        // else{
-        //     console.log("token is missing")
-        //     navigate('/login')
-        // }
-    }, [])
+    // useEffect(() => {
+    //     // const token = localStorage.getItem('token');
+    //     // if(token){
+    //     //     // Set the Authorization header with the token
+    //     //     const config = {
+    //     //         headers: {
+    //     //             Authorization: `Bearer ${token}`
+    //     //         }
+    //     //     };
+    //         axios.get("/auth/user/", { withCredentials: true })
+    //         .then(res=> {
+    //             console.log("trying to verify for getting started", res.data);
+    //         }).catch(error => {
+    //             console.log("failed to verify getting started", error.response.data)
+    //             navigate('/login')
+    //         })
+    //     //}
+    //     // else{
+    //     //     console.log("token is missing")
+    //     //     navigate('/login')
+    //     // }
+    // }, [])
 
-
+if(isLoggedIn){
 
   return (
-    <>
     <Section>
         <ContainerMedium>
             <TitleText>Getting Started</TitleText>
@@ -200,11 +203,11 @@ function GetStarted() {
 
         </div>
         </ContainerMedium>
-    </Section>
-
-    </>
-    
+    </Section> 
   );
+} else{
+    redirect('/login');
+}
 }
 
 export default GetStarted;
