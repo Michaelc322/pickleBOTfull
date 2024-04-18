@@ -12,14 +12,12 @@ import { Toaster } from 'react-hot-toast';
 import ForgotPassword from "./Pages/ForgotPassword.tsx";
 import ResetPassword from "./Pages/ResetPassword.tsx";
 import BotStart from "./Pages/BotStart.tsx";
-import { useAuth } from "../context/AuthProvider.tsx";
 
 axios.defaults.baseURL = 'https://pickleapi.vercel.app';
 axios.defaults.withCredentials = true;
 
 
 export default function App(){
-  const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
   return(
     <>
@@ -34,7 +32,6 @@ export default function App(){
             fontFamily: 'Poppins'
           }}}/>
 
-          {isLoggedIn ?   
           <>          
           <BrowserRouter>
               <Routes>
@@ -48,19 +45,6 @@ export default function App(){
               </Routes>
           </BrowserRouter> 
           </>
-          :        
-          <>
-          <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/login" element={<LogIn/>}/>
-                <Route path="/register" element={<Register/>}/>
-                <Route path="/*" element={<Home/>}/>
-                <Route path="/forgot-password" element={<ForgotPassword/>}/>
-                </Routes>
-          </BrowserRouter>
-          </>
-          }
 
 
         <Footer/>
