@@ -3,7 +3,7 @@ import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
 import { useNavigate, redirect } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useAuth } from "../../context/AuthProvider";
 
 const Section = styled.section`
@@ -98,7 +98,7 @@ const CodeContainer = styled.div`
 `
 
 function GetStarted() {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
 
