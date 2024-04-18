@@ -18,6 +18,8 @@ axios.defaults.withCredentials = true;
 
 
 export default function App(){
+  const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
+
   return(
     <>
         <Helmet>
@@ -30,7 +32,10 @@ export default function App(){
             padding: '16px',
             fontFamily: 'Poppins'
           }}}/>
-            <BrowserRouter>
+
+          {isLoggedIn ?   
+          <>          
+          <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/getstarted" element={<GetStarted/>}/>
@@ -40,7 +45,18 @@ export default function App(){
                 <Route path="/reset-password/:token" element={<ResetPassword/>}/>
                 <Route path="/reserve-courts" element = {<BotStart/>}/>
               </Routes>
+          </BrowserRouter> 
+          </>
+          :        
+          <>
+          <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home/>}/>
+                </Routes>
           </BrowserRouter>
+          </>
+          }
+
 
         <Footer/>
     </>
