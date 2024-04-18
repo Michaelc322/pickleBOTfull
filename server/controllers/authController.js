@@ -221,7 +221,7 @@ const verifyUser = async(req, res) => {
 
 const logoutUser = async(req, res) => {
     try {
-        await res.clearCookie('jwt');
+        await res.removeCookie('jwt');
         return res.json({message: 'Logged out successfully'})
     } catch (error) {
         return res.json({error: 'An error occurred while logging out'})
