@@ -1,7 +1,7 @@
 
 import styled, { keyframes } from 'styled-components';
 import { SlideInFadeRight } from '../Styles/AnimationComponents';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthProvider.tsx';
 import '../Styles/styles.css';
