@@ -44,7 +44,7 @@ const [isLoading, setIsLoading] = useState(true);
   
     const logout = () => {
       console.log("Logging out")
-      axios.post('/auth/logout').then(response => {
+      axios.get('/auth/logout').then(response => {
           console.log(response);
       }).catch(error => {
           console.log(error);

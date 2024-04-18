@@ -111,7 +111,7 @@ const MenuDiv = styled.div`
     display: flex;
     align-items: center;
     padding-top: 10px;
-    height: 70px;
+    height: 50px;
     background-color: #1a1a1a;
     width: 150px;
     position: fixed;

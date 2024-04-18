@@ -7,7 +7,7 @@ const { reserveCourt } = require('../controllers/botController');
 // cors uses origin from front end url
 router.use(
     cors({
-        credentials: false,
+        credentials: true,
         origin: 'https://pickle-bo-tfull.vercel.app'
     })
 );
