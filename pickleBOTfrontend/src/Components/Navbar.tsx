@@ -211,7 +211,7 @@ function Navbar(){
     const { isLoggedIn, logout, userInfo } = useAuth() as { isLoggedIn: boolean, logout: () => void, userInfo: any };
     const [openDropdownMenu, setOpenDropdownMenu] = useState(false);  
     const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false);
-
+    console.log("is logged in navbar", isLoggedIn)
     const openDropdown = () => {
         setOpenDropdownMenu(!openDropdownMenu);
     }
