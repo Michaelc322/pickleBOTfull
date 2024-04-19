@@ -38,6 +38,7 @@ const [isLoading, setIsLoading] = useState(true);
                     setIsLoading(false);
                 }
             }
+            console.log(isLoggedIn, "is logged in from context")
             getProfile();
     }, [])
 
