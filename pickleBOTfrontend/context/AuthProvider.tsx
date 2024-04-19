@@ -39,9 +39,10 @@ const [isLoading, setIsLoading] = useState(true);
                     setIsLoading(false);
                 }
             }
-            console.log(isLoggedIn, "is logged in from context")
             getProfile();
-    }, [])
+            console.log(isLoggedIn, "is logged in from context")
+
+    }, [isLoggedIn])
 
     const login = () => {
       // Logic to handle login
