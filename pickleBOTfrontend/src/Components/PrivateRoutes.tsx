@@ -4,10 +4,10 @@ import { useAuth } from '../../context/AuthProvider';
 
 export default function PrivateRoutes() {
     const { isLoggedIn } = useAuth() as {isLoggedIn: boolean};
-    console.log("isLoggedIn", isLoggedIn)
+    console.log("isLoggedIn PRIVCATE ROUTES", isLoggedIn)
     return(
         <>
-            {isLoggedIn ? <Outlet /> : <Navigate to="/login" /> }
+            {isLoggedIn ? <Outlet/> : <Navigate to="/login" /> }
         </>
     )
 }

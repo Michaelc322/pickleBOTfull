@@ -2,7 +2,6 @@
 import styled, { keyframes } from 'styled-components';
 import { SlideInFadeRight } from '../Styles/AnimationComponents';
 import { useState } from 'react';
-import axios from 'axios';
 import { useAuth } from '../../context/AuthProvider.tsx';
 import '../Styles/styles.css';
 
@@ -220,30 +219,6 @@ function Navbar(){
         setOpenHamburgerMenu(!openHamburgerMenu);
     }
 
-    // Example: Check if user is logged in from localStorage
-    axios.defaults.withCredentials = true;
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     if(token){
-    //         // Set the Authorization header with the token
-    //         const config = {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`
-    //             }
-    //         };
-    //         axios.get("/auth/user/", config)
-    //         .then(res=> {
-
-    //             console.log("logged in", res.data)
-    //         }).catch(error => {
-    //             console.log("User is not logged in; log in is false", error.response.data)
-            
-    //         })
-    //     }
-    //     else{
-    //         console.log("token is missing")
-    //     }
-    // }, [])
 
 
   return (
