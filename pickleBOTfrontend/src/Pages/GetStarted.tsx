@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
-import { redirect } from "react-router-dom";
-import axios from "axios";
 // import { useEffect } from "react";
 import { useAuth } from "../../context/AuthProvider";
+import { useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Section = styled.section`
     display: flex;
@@ -101,32 +102,17 @@ function GetStarted() {
     //const navigate = useNavigate();
     const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
-
+    const navigate = useNavigate();
     axios.defaults.withCredentials = true;
-    // useEffect(() => {
-    //     // const token = localStorage.getItem('token');
-    //     // if(token){
-    //     //     // Set the Authorization header with the token
-    //     //     const config = {
-    //     //         headers: {
-    //     //             Authorization: `Bearer ${token}`
-    //     //         }
-    //     //     };
-    //         axios.get("/auth/user/", { withCredentials: true })
-    //         .then(res=> {
-    //             console.log("trying to verify for getting started", res.data);
-    //         }).catch(error => {
-    //             console.log("failed to verify getting started", error.response.data)
-    //             navigate('/login')
-    //         })
-    //     //}
-    //     // else{
-    //     //     console.log("token is missing")
-    //     //     navigate('/login')
-    //     // }
-    // }, [])
-
-if(isLoggedIn){
+    useEffect(() => {
+        axios.get("/auth/user/", { withCredentials: true })
+        .then(res=> {
+            console.log("trying to verify for reserve", res.data);
+        }).catch(error => {
+            console.log("failed to verify reserve", error.response.data)
+            navigate('/login')
+        })
+}, [])
 
   return (
     <Section>
@@ -205,9 +191,6 @@ if(isLoggedIn){
         </ContainerMedium>
     </Section> 
   );
-} else{
-    redirect('/login');
-}
 }
 
 export default GetStarted;
