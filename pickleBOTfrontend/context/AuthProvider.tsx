@@ -23,7 +23,9 @@ const [isLoading, setIsLoading] = useState(true);
                     const {data} = await axios.get('/auth/user/');
                     console.log("data", data)
                     if(data.error){
-                        console.log(data.error);
+                        console.log(data.error, "data error get profile");
+                        setIsLoading(false);
+                        setIsLoggedIn(false);
                     } else {
                         setIsLoading(false);
                         setUserInfo(data.user);
@@ -31,7 +33,7 @@ const [isLoading, setIsLoading] = useState(true);
                     }
                 }
                 catch (error) {
-                    console.log(error);
+                    console.log(error, "error get profile");
                     setIsLoggedIn(false);
                     setIsLoading(false);
                 }
