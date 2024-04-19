@@ -18,6 +18,6 @@ router.get('/auth/user/', authenticateToken, verifyUser);
 
 router.post('/reset-password/:token', resetPassword);
 router.post('/forgot-password', forgotPassword);
-router.get('/auth/logout', logoutUser);
+router.post('/auth/logout', logoutUser);
 
 module.exports = router;
