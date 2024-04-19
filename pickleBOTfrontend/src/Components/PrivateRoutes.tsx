@@ -21,7 +21,7 @@ export default function PrivateRoutes() {
                     } else {
                         setUserInfo(data.user);
                         setIsLoggedIn(true);
-                        console.log(isLoggedIn, "inside if else statement?")
+                        console.log(isLoggedIn, "private route")
                     }
                 }
                 catch (error) {
@@ -34,7 +34,7 @@ export default function PrivateRoutes() {
             console.log(isLoggedIn, userInfo, "inside private routes")
 
 
-    }, [])
+    }, [isLoggedIn])
     console.log("isLoggedIn", isLoggedIn)
     return(
         <>
