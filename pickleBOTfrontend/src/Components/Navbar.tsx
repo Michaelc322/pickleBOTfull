@@ -208,7 +208,7 @@ const MenuLink = styled.a`
 `
 
 function Navbar(){
-    const { isLoggedIn, logout, userInfo, isLoading } = useAuth() as { isLoggedIn: boolean, logout: () => void, userInfo: any, isLoading: boolean };
+    const { isLoggedIn, logout, userInfo } = useAuth() as { isLoggedIn: boolean, logout: () => void, userInfo: any };
     const [openDropdownMenu, setOpenDropdownMenu] = useState(false);  
     const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false);
 
