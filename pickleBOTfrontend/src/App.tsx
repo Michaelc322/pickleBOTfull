@@ -32,7 +32,6 @@ export default function App(){
             padding: '16px',
             fontFamily: 'Poppins'
           }}}/>
-          <PrivateRoutes/>
           <>          
           <BrowserRouter>
               <Routes>
