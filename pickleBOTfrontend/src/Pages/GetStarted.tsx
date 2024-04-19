@@ -3,9 +3,7 @@ import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
 // import { useEffect } from "react";
 // import { useAuth } from "../../context/AuthProvider";
-import { useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 
 const Section = styled.section`
     display: flex;
@@ -102,17 +100,6 @@ function GetStarted() {
     //const navigate = useNavigate();
     // const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
-    const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
-    useEffect(() => {
-        axios.get("/auth/user/", { withCredentials: true })
-        .then(res=> {
-            console.log("trying to verify for reserve", res.data);
-        }).catch(error => {
-            console.log("failed to verify reserve", error.response.data)
-            navigate('/login')
-        })
-}, [])
 
   return (
     <Section>

@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
 import { Container, Fields, FormBox, FormContainer, InputLabel, Section, SubmitButton } from '../Components/LogInComponents';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import '../Styles/styles.css';
-import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -18,17 +17,7 @@ export default function BotStart() {
         WhichCourt: yup.string().required('Required'),
     })
 
-    const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
-    useEffect(() => {
-            axios.get("/auth/user/", { withCredentials: true })
-            .then(res=> {
-                console.log("trying to verify for reserve", res.data);
-            }).catch(error => {
-                console.log("failed to verify reserve", error.response.data)
-                navigate('/login')
-            })
-    }, [])
+
 
     const { values, errors, touched, handleChange, handleSubmit } = useFormik({
         initialValues: {
