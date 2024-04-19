@@ -30,7 +30,6 @@ const [isLoading, setIsLoading] = useState(true);
                         setIsLoading(false);
                         setUserInfo(data.user);
                         setIsLoggedIn(true);
-                        console.log(isLoggedIn, "inside if else statement?")
                     }
                 }
                 catch (error) {
@@ -39,9 +38,11 @@ const [isLoading, setIsLoading] = useState(true);
                     setIsLoading(false);
                 }
             }
+
+            console.log("is logged in", isLoggedIn)
             getProfile();
 
-    }, [])
+    }, [isLoggedIn])
 
     const login = () => {
       // Logic to handle login
