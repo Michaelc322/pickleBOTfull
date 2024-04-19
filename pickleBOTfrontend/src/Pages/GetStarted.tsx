@@ -100,7 +100,7 @@ const CodeContainer = styled.div`
 
 function GetStarted() {
     //const navigate = useNavigate();
-    const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
+    // const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;

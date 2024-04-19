@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export default function BptStart() { 
+export default function BotStart() { 
     const basicSchema = yup.object().shape({
         userSubmitted: yup.string().required('Required'),
         passwordSubmitted: yup.string().required('Required'),
