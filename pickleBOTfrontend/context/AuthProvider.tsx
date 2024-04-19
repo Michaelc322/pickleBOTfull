@@ -47,7 +47,7 @@ const [isLoading, setIsLoading] = useState(true);
                     setIsLoggedIn(false);
                     setIsLoading(false);
                 }
-              }, [])
+              }, [isLoggedIn])
 
     const login = () => {
       // Logic to handle login
