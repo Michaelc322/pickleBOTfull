@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
-import { useNavigate, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import axios from "axios";
 // import { useEffect } from "react";
 import { useAuth } from "../../context/AuthProvider";
