@@ -18,28 +18,36 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-            const getProfile = async () => { 
                 try {
-                    const {data} = await axios.get('/auth/user/');
-                    console.log("data", data)
-                    if(data.error){
-                        console.log(data.error, "data error get profile");
-                        setIsLoading(false);
-                        setIsLoggedIn(false);
-                    } else {
-                        setIsLoading(false);
-                        setUserInfo(data.user);
-                        setIsLoggedIn(true);
-                    }
+                    axios.get('/auth/user/').then(response => {
+                        console.log(response, "response get profile");
+                        if(response.data.error){
+                          console.log(response.data.error, "data error get profile");
+                          setIsLoading(false);
+                          setIsLoggedIn(false);
+                      } else {
+                          setIsLoading(false);
+                          setUserInfo(response.data.user);
+                          setIsLoggedIn(true);
+                      }
+                    });
+                    // console.log("data", data)
+                    // if(data.error){
+                    //     console.log(data.error, "data error get profile");
+                    //     setIsLoading(false);
+                    //     setIsLoggedIn(false);
+                    // } else {
+                    //     setIsLoading(false);
+                    //     setUserInfo(data.user);
+                    //     setIsLoggedIn(true);
+                    // }
                 }
                 catch (error) {
                     console.log(error, "error get profile");
                     setIsLoggedIn(false);
                     setIsLoading(false);
                 }
-            }
-            getProfile();
-    }, [])
+              }, [])
 
     const login = () => {
       // Logic to handle login
