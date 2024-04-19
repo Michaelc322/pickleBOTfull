@@ -259,8 +259,6 @@ function Navbar(){
                 <NavLink href="/reserve-courts"><i className="fa-solid fa-calendar-days"></i>Reserve</NavLink>
                 <NavLink href="/getstarted"><i className="fa-solid fa-folder-open"></i>Documentation</NavLink>
 
-                {isLoading ? <div><i className="fa-solid fa-spinner-third"></i>Loading...</div> : null}
-
                 {isLoggedIn ? (
                     <>
                         <NavLink onClick={openDropdown}><i className="fa-solid fa-user"></i>{userInfo.firstName}<i className="fa-solid fa-caret-down"></i></NavLink>

@@ -12,6 +12,7 @@ import { Toaster } from 'react-hot-toast';
 import ForgotPassword from "./Pages/ForgotPassword.tsx";
 import ResetPassword from "./Pages/ResetPassword.tsx";
 import BotStart from "./Pages/BotStart.tsx";
+import PrivateRoutes from "./Components/PrivateRoutes.tsx";
 
 axios.defaults.baseURL = 'https://pickleapi.vercel.app';
 axios.defaults.withCredentials = true;
@@ -35,13 +36,17 @@ export default function App(){
           <>          
           <BrowserRouter>
               <Routes>
+                <Route element={<PrivateRoutes/>}>
+                  <Route path="/reserve-courts" element={<BotStart/>}/>
+                  <Route path="/getstarted" element={<GetStarted/>}/>
+                </Route>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/getstarted" element={<GetStarted/>}/>
+                {/* <Route path="/getstarted" element={<GetStarted/>}/> */}
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/forgot-password" element={<ForgotPassword/>}/>
                 <Route path="/reset-password/:token" element={<ResetPassword/>}/>
-                <Route path="/reserve-courts" element = {<BotStart/>}/>
+                {/* <Route path="/reserve-courts" element = {<BotStart/>}/> */}
               </Routes>
           </BrowserRouter> 
           </>
