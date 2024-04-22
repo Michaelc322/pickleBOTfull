@@ -20,6 +20,7 @@ const options = {
       methods: 'GET, POST, PUT, DELETE, OPTIONS',
       allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
       credentials: true,
+      
 };
   
 app.use(cors(options));
