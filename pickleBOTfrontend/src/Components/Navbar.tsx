@@ -4,6 +4,7 @@ import { SlideInFadeRight } from '../Styles/AnimationComponents';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthProvider.tsx';
 import '../Styles/styles.css';
+import axios from 'axios';
 
 const FadeUp = keyframes`
     0% {
@@ -207,7 +208,7 @@ const MenuLink = styled.a`
 `
 
 function Navbar(){
-    const { isLoggedIn, logout, userInfo } = useAuth() as { isLoggedIn: boolean, logout: () => void, userInfo: any };
+    const { isLoggedIn, userInfo, logout } = useAuth() as any;
     const [openDropdownMenu, setOpenDropdownMenu] = useState(false);  
     const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false);
     console.log("is logged in navbar", isLoggedIn)
@@ -219,7 +220,16 @@ function Navbar(){
         setOpenHamburgerMenu(!openHamburgerMenu);
     }
 
+    const handleLogout = () => {
+        axios.post('/auth/logout').then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        })
 
+        logout();
+        
+    }
 
   return (
     <>
@@ -254,7 +264,7 @@ function Navbar(){
         {openDropdownMenu && (
                     <MenuDiv>
                         {/* <DropItems href="/">Settings<i className="fa-solid fa-gear"></i></DropItems> */}
-                        <DropItems onClick={logout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></DropItems>
+                        <DropItems onClick={handleLogout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></DropItems>
 
                     </MenuDiv>
                 
