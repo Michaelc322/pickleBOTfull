@@ -42,7 +42,7 @@ const [isLoading, setIsLoading] = useState(true);
             console.log("is logged in", isLoggedIn)
             getProfile();
 
-    }, [])
+    }, [setIsLoggedIn, isLoggedIn])
 
     const login = () => {
       // Logic to handle login
