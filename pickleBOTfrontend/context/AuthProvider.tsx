@@ -41,6 +41,9 @@ const [isLoading, setIsLoading] = useState(true);
                     setIsLoading(false);
 
                 }
+                finally {
+                    setIsLoading(false);
+                }
             }
 
             console.log("is logged in", isLoggedIn)

@@ -193,6 +193,7 @@ const MenuLink = styled.a`
     text-decoration: none;
     cursor: pointer;
     font-size: 18px;
+    font-weight: 700;
     color: white;
 
     animation: ${FadeUp} 0.2s linear;
