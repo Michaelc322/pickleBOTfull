@@ -30,6 +30,7 @@ const [isLoading, setIsLoading] = useState(true);
                     } else {
                         setUserInfo(data.user);
                         setIsLoggedIn(true);
+                        setIsLoading(false);
                     }
                 }
                 catch (error) {
