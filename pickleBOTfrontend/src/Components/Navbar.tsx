@@ -50,7 +50,7 @@ const NavLink = styled.a`
     padding-right: 5px;
     margin-right:40px;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 700;
     position: relative;
     cursor: pointer;
     
