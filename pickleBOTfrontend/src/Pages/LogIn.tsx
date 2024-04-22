@@ -13,7 +13,7 @@ import '../Styles/styles.css';
 
 export default function LogIn() { 
     axios.defaults.withCredentials = true;
-    const { login, setUserInfo } = useAuth() as any;
+    const { setUserInfo } = useAuth() as any;
     const basicSchema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Required'),
         password: yup.string().required('Required')
@@ -41,7 +41,7 @@ export default function LogIn() {
                 } else {
                     toast.success('Logged in successfully!')
                     navigate('/')
-                    login();
+                    //login();
                 }
             }
             catch (error) {

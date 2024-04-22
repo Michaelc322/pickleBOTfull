@@ -24,7 +24,9 @@ const [isLoading, setIsLoading] = useState(true);
                     console.log("data", data)
                     if(data.error){
                         console.log(data.error, "data error get profile");
-                        setIsLoggedIn(false);
+                        if(isLoggedIn){
+                          setIsLoggedIn(false);
+                        }
                     } else {
                         setUserInfo(data.user);
                         setIsLoggedIn(true);
@@ -33,9 +35,6 @@ const [isLoading, setIsLoading] = useState(true);
                 catch (error) {
                     console.log(error, "error get profile");
                     setIsLoggedIn(false);
-                }
-                finally {
-                    setIsLoading(false);
                 }
             }
 
@@ -61,7 +60,7 @@ const [isLoading, setIsLoading] = useState(true);
   
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, userInfo, setUserInfo, isLoading }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, userInfo, setUserInfo, isLoading, setIsLoading }}>
       {children}
     </AuthContext.Provider>
   );
