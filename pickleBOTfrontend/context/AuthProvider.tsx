@@ -41,7 +41,7 @@ const [isLoading, setIsLoading] = useState(true);
             console.log("is logged in", isLoggedIn)
             getProfile();
 
-    }, [isLoggedIn])
+    }, [])
 
     const login = () => {
       // Logic to handle login
