@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 const options = {
-      origin: 'https://pickle-bo-tfull.vercel.app',
+      origin: 'https://thepicklebot.vercel.app',
       methods: 'GET, POST, PUT, DELETE, OPTIONS',
       allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
       credentials: true,
