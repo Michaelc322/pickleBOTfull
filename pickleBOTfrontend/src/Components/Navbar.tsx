@@ -220,9 +220,8 @@ function Navbar(){
         setOpenHamburgerMenu(!openHamburgerMenu);
     }
 
-    const handleLogout = async () => {
-
-        await axios.post('/auth/logout').then(response => {
+    const handleLogout = () => {
+        axios.post('/auth/logout').then(response => {
             console.log(response);
         }).catch(error => {
             console.log(error);
