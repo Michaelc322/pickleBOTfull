@@ -13,6 +13,7 @@ import ForgotPassword from "./Pages/ForgotPassword.tsx";
 import ResetPassword from "./Pages/ResetPassword.tsx";
 import BotStart from "./Pages/BotStart.tsx";
 import PrivateRoutes from "./Components/PrivateRoutes.tsx";
+import { AuthProvider } from "../context/AuthProvider.tsx";
 
 axios.defaults.baseURL = 'https://pickleapi.vercel.app';
 axios.defaults.withCredentials = true;
@@ -22,6 +23,7 @@ export default function App(){
 
   return(
     <>
+    <AuthProvider>
         <Helmet>
           <title>pickleBOT | Reserve Courts</title>
           <link rel="icon" type="image/png" href="./images/pickleball.png"/>
@@ -52,6 +54,7 @@ export default function App(){
 
 
         <Footer/>
+      </AuthProvider>
     </>
   )
 }
