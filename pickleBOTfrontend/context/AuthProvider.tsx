@@ -27,6 +27,8 @@ const [isLoading, setIsLoading] = useState(true);
                         if(isLoggedIn){
                           setIsLoggedIn(false);
                         }
+                        setIsLoading(false);
+
                     } else {
                         setUserInfo(data.user);
                         setIsLoggedIn(true);
@@ -36,6 +38,8 @@ const [isLoading, setIsLoading] = useState(true);
                 catch (error) {
                     console.log(error, "error get profile");
                     setIsLoggedIn(false);
+                    setIsLoading(false);
+
                 }
             }
 
