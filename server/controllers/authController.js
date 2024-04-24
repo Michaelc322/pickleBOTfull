@@ -140,7 +140,7 @@ const forgotPassword = async(req, res) => {
                 <img src="cid:pickleballLogo" alt="pickleBOT Logo" style="display: block; margin: 0 auto; max-width: 100px;"/>
                 <h1 style="color: #fff;">pickleBOT</h1>
                 <h3 style="color: #fff; margin-top: 10px;">Click the button below to reset your password</h3>
-                <p><a href="http://localhost:5173/reset-password/${token}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Reset Password</a></p>
+                <p><a href="https://thepicklebot.vercel.app/reset-password/${token}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Reset Password</a></p>
             </div>
             `,
             attachments: [{
