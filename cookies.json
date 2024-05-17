@@ -1,0 +1,31 @@
+[
+  {
+    "name": "__RequestVerificationToken",
+    "value": "nYOjOrP4jyPkRJDDJiI0dlUrQJZEwW0T5WaWHwZSj5FsifKDa1cEvCC5TJMAYn73SwiBcWphfBBhGFb-xLqhQD3ZDZ81",
+    "domain": "app.courtreserve.com",
+    "path": "/",
+    "expires": -1,
+    "size": 118,
+    "httpOnly": true,
+    "secure": false,
+    "session": true,
+    "priority": "Medium",
+    "sameParty": false,
+    "sourceScheme": "Secure"
+  },
+  {
+    "name": "ASP.NET_SessionId",
+    "value": "1gx2clkyzgznh05ntwnarlzm",
+    "domain": "app.courtreserve.com",
+    "path": "/",
+    "expires": -1,
+    "size": 41,
+    "httpOnly": true,
+    "secure": false,
+    "session": true,
+    "sameSite": "Lax",
+    "priority": "Medium",
+    "sameParty": false,
+    "sourceScheme": "Secure"
+  }
+]

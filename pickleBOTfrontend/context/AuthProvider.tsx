@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   // FIRST ONE 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({loggedIn: null});
     // Example: Check if user is logged in from localStorage
     axios.defaults.withCredentials = true;
 const [isLoading, setIsLoading] = useState(true);
