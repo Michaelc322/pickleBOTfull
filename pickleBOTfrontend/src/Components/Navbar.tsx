@@ -1,22 +1,11 @@
 
-import styled, { keyframes } from 'styled-components';
-import { SlideInFadeRight } from '../Styles/AnimationComponents';
+import styled from 'styled-components';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthProvider.tsx';
 import '../Styles/styles.css';
 import axios from 'axios';
 
-const FadeUp = keyframes`
-    0% {
-        opacity: 0%;
-        transform: translateY(30px) scale(0.9);
-    }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0px) scale(1);
-    }
-`
 
 const Nav = styled.div`
     position: fixed;
@@ -57,7 +46,6 @@ const NavLink = styled.a`
     background-image: linear-gradient(90deg, white, white);
     background-clip: text;
     -webkit-text-fill-color: white;
-    animation: ${FadeUp} 0.5s linear;
     &:hover:after{
         width: 100%;
         transition: 0.3s;
@@ -98,7 +86,6 @@ const LogoNav = styled.a`
     margin-left:35px;
     text-decoration: none;
     color: white;
-    animation: ${SlideInFadeRight} .5s linear;
 `
 
 const LogoTitle = styled.h1`
@@ -195,9 +182,6 @@ const MenuLink = styled.a`
     font-size: 18px;
     font-weight: 700;
     color: white;
-
-    animation: ${FadeUp} 0.2s linear;
-
 
     i{
         margin-right: 10px;
