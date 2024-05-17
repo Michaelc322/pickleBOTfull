@@ -9,7 +9,7 @@ const Section = styled.section`
     width: 100%;
     align-items: center;
     background-color: #121212;
-    height: 100vh;
+    height: 100%;
     flex-direction: column;
     
 `
@@ -19,8 +19,17 @@ const SectionTwo = styled.section`
     width: 100%;
     align-items: center;
     background-color: #121212;
-    height: 80vh;
+    height: 100%;
     flex-direction: column;
+    margin-top: 200px;
+
+    @media ${device.lg}{
+        margin-top: 100px;
+    }
+
+    @media ${device.md}{
+        margin-top: 0px;
+    }
     
 `
 
@@ -66,7 +75,10 @@ const Testimonial = styled.div`
     }
 
     @media ${device.md}{
-        width: 80%;
+        left: 0px;
+        width: 100%;
+        height: 400px;
+        flex-direction: column;
     }
     @media ${device.sm}{
         left: 0px;
@@ -103,6 +115,7 @@ const SmallContainer = styled.div`
     width: 200px;
     font-family: Poppins;
     margin-top: 80px;
+    margin-bottom: 300px;
 
 `
 
@@ -128,6 +141,8 @@ const BulletPoints = styled.div`
     p{
         font-size: 17px;
         margin-bottom: 10px;
+        font-weight: 700;
+
     }
 `
 
@@ -146,13 +161,28 @@ const Box = styled.div`
     z-index: 11;
     transform: translate(-80px, 50px);
 
+
+
+    @media ${device.md}{
+        transform: translate(50px, -30px);
+        width: 32rem;
+    }
+
     @media ${device.sm}{
-        transform: translate(0px, 20px);
-        width: 300px;
+        transform: translate(50px, -30px);
+        width: 100%;
         padding: 0px;
         height: 10rem;
         border-radius: 1em;
     }
+
+    @media ${device.xs}{
+        transform: translate(0px, -30px);
+        border-bottom-left-radius: 0px;
+
+    }
+
+
 
 `
 
@@ -215,19 +245,14 @@ const ProfilePic = styled.div`
 `
 const PickleImage = styled.div`
     position: relative;
-    width: 800px;
-    height: 400px;
-    overflow: hidden;
+    width: 600px;
+    height: 300px;
     img{
-        z-index: 8;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
-        position: absolute;
-
+        object-position: 0% 0%;
     }
     @media ${device.sm}{
             width: 100%;
@@ -258,6 +283,7 @@ const GetStartedButton = styled.button`
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
         transition: 0.5s;
         font-family: Poppins;
+        font-weight: 700;
     }
 
      

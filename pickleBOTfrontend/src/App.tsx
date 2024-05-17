@@ -13,14 +13,15 @@ import ForgotPassword from "./Pages/ForgotPassword.tsx";
 import ResetPassword from "./Pages/ResetPassword.tsx";
 import BotStart from "./Pages/BotStart.tsx";
 import PrivateRoutes from "./Components/PrivateRoutes.tsx";
+import { useAuth } from "../context/AuthProvider.tsx";
 
 axios.defaults.baseURL = 'https://pickleapi.vercel.app';
 axios.defaults.withCredentials = true;
 
 
 export default function App(){
-
-  return(
+  const {userInfo} = useAuth() as {userInfo: any};
+  return (
     <>
         <Helmet>
           <title>pickleBOT | Reserve Courts</title>
@@ -32,7 +33,8 @@ export default function App(){
             padding: '16px',
             fontFamily: 'Poppins'
           }}}/>
-          <>          
+          <> 
+          { userInfo.loggedIn === null ? <div><h1>LOADING</h1></div> : (         
           <BrowserRouter>
               <Routes>
                 <Route element={<PrivateRoutes/>}>
@@ -48,6 +50,7 @@ export default function App(){
                 {/* <Route path="/reserve-courts" element = {<BotStart/>}/> */}
               </Routes>
           </BrowserRouter> 
+          )}
           </>
 
 
