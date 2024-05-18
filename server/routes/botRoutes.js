@@ -8,7 +8,7 @@ const { reserveCourt } = require('../controllers/botController');
 router.use(
     cors({
         credentials: true,
-        origin: 'https://thepicklebot.vercel.app'
+        origin: 'http://localhost:5174'
     })
 );
 

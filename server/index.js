@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 const options = {
-      origin: 'https://thepicklebot.vercel.app',
+      origin: 'http://localhost:5174',
       methods: 'GET, POST, PUT, DELETE, OPTIONS',
       allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
       credentials: true,

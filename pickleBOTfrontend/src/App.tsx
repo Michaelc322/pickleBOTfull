@@ -14,8 +14,9 @@ import ResetPassword from "./Pages/ResetPassword.tsx";
 import BotStart from "./Pages/BotStart.tsx";
 import PrivateRoutes from "./Components/PrivateRoutes.tsx";
 import { useAuth } from "../context/AuthProvider.tsx";
+import PageNotFound from "./Pages/PageNotFound.tsx";
 
-axios.defaults.baseURL = 'https://pickleapi.vercel.app';
+axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
 
 
@@ -31,7 +32,8 @@ export default function App(){
           <Toaster position='top-center' toastOptions={{duration: 2000,
           style:{
             padding: '16px',
-            fontFamily: 'Poppins'
+            fontFamily: 'Poppins',
+            fontWeight: 700,
           }}}/>
           <> 
           { userInfo.loggedIn === null ? <div><h1>LOADING</h1></div> : (         
@@ -47,6 +49,7 @@ export default function App(){
                 <Route path="/login" element={<LogIn/>}/>
                 <Route path="/forgot-password" element={<ForgotPassword/>}/>
                 <Route path="/reset-password/:token" element={<ResetPassword/>}/>
+                <Route path="*" element={<PageNotFound/>}/>
                 {/* <Route path="/reserve-courts" element = {<BotStart/>}/> */}
               </Routes>
           </BrowserRouter> 

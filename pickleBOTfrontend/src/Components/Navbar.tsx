@@ -206,11 +206,7 @@ function Navbar(){
     }
 
     const handleLogout = () => {
-        axios.post('/auth/logout').then(response => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        })
+        localStorage.removeItem('token');
 
         logout();
         
@@ -262,7 +258,7 @@ function Navbar(){
             {isLoggedIn ? (
                 <>
                     <MenuLink href="/">Settings<i className="fa-solid fa-gear"></i></MenuLink>
-                    <MenuLink onClick={logout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></MenuLink>
+                    <MenuLink onClick={handleLogout} href="/login">Log Out<i className="fa-solid fa-right-from-bracket"></i></MenuLink>
 
                 </>
 

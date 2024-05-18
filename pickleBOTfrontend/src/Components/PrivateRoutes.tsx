@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../../context/AuthProvider';
+import LoadingPage from '../Pages/LoadingPage';
 
 
 export default function PrivateRoutes() {
@@ -7,7 +8,7 @@ export default function PrivateRoutes() {
     console.log("isLoggedIn PRIVCATE", isLoggedIn)
 
 
-    return isLoading ? ( <h1>Loading</h1>) : (
+    return isLoading ? ( <LoadingPage/>) : (
         <>
             {isLoggedIn ? <Outlet /> : <Navigate to="/login" /> }
         </>

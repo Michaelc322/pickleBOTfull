@@ -3,6 +3,7 @@ const { hashPassword, comparePassword } = require('../helpers/auth')
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 
 // Register endpoint
@@ -72,7 +73,7 @@ const loginUser = async(req, res) => {
 
             res.setHeader('Authorization', `Bearer ${token}`);
             // 28800000 = 8 hours
-            res.cookie('jwt', token, { httpOnly: true, maxAge: 28800000, secure: true, sameSite: 'none', Partitioned: true });
+            //res.cookie('jwt', token, { httpOnly: true, maxAge: 28800000, secure: true, sameSite: 'none', Partitioned: true });
             res.json({ user, token });
         }
 
@@ -89,10 +90,10 @@ const loginUser = async(req, res) => {
 
 const authenticateToken = async(req, res, next)=>{
     try {
-        // const authHeader = req.headers['authorization']
+        const token = req.headers['authorization']?.split(" ")[1];
         // const token = authHeader && authHeader.split(' ')[1]
 
-        const token = req.cookies.jwt;
+        //const token = req.cookies.jwt;
 
         if(token == null) return res.sendStatus(401);
 
@@ -172,23 +173,6 @@ const forgotPassword = async(req, res) => {
 
 }
 
-// const resetPassword = async(req, res) => {
-//     const {token, password} = req.body;
-
-//     if(token){
-//         try {
-//             const decodedData = jwt.verify(token, process.env.JWT_SECRET);
-//             const id = decodedData.id;
-    
-//             const hashedPassword = await hashPassword(password)
-    
-//             await User.findByIdAndUpdate({_id: id}, {password: hashedPassword});
-//             return res.status(200).json({message: 'Password changed successfully'})
-//         } catch (error) {
-//             return res.status(400).json({error: 'An error occurred while resetting the password'})
-//         }
-//     }
-// }
 
 const resetPassword = async(req, res) => {
     const {password} = req.body;
@@ -221,7 +205,7 @@ const verifyUser = async(req, res) => {
 
 const logoutUser = async(req, res) => {
     try {
-        await res.clearCookie('jwt');
+        await localStorage.removeItem('jwt');
         return res.json({message: 'Logged out successfully'})
     } catch (error) {
         return res.json({error: 'An error occurred while logging out'})

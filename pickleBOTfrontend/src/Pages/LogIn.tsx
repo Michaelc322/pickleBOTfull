@@ -33,12 +33,11 @@ export default function LogIn() {
             try {
                 const {data} = await axios.post('/login', values);
                 setUserInfo(data.user);
-
-                //localStorage.setItem('token', data.token);
                 if(data.error){
                     toast.error(data.error);
                     setError(data.error);
                 } else {
+                    localStorage.setItem('token', data.token);
                     toast.success('Logged in successfully!')
                     navigate('/')
                     //login();
