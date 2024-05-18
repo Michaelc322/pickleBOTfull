@@ -8,7 +8,7 @@ const { registerUser, loginUser, verifyUser, resetPassword, forgotPassword, auth
 router.use(
     cors({
         credentials: true,
-        origin: 'http://localhost:5174'
+        origin: 'https://thepicklebot.vercel.app'
     })
 );
 

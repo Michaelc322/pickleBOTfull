@@ -160,6 +160,7 @@ export const SubmitButton = styled.button`
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
         transition: 0.5s;
         font-family: Poppins;
+        font-weight: 700;
         top: 5px;
         position: relative;
     }

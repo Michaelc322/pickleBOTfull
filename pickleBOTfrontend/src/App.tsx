@@ -16,7 +16,7 @@ import PrivateRoutes from "./Components/PrivateRoutes.tsx";
 import { useAuth } from "../context/AuthProvider.tsx";
 import PageNotFound from "./Pages/PageNotFound.tsx";
 
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'https://pickleapi.vercel.app';
 axios.defaults.withCredentials = true;
 
 
