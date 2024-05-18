@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthProvider.tsx';
 import '../Styles/styles.css';
-import axios from 'axios';
 
 
 
