@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
+import { device } from "../Styles/breakpoints";
 // import { useEffect } from "react";
 // import { useAuth } from "../../context/AuthProvider";
 
@@ -33,6 +34,9 @@ const ContainerMedium = styled.div`
     width: 800px;
     flex-direction: column;
     animation: ${SlideInFadeLeft} 0.5s linear;
+    @media ${device.lg}{
+        width: 100%;
+    }
     `
 const H1Text = styled.h1`
     text-align: left;
@@ -82,13 +86,13 @@ const MainText = styled.p`
 
 const CodeContainer = styled.div`
     background-color: #0c0c0c;
-    padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
     pre{
         color: white;
+        padding: 20px;
     }
     code{
         color: white;
